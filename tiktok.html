@@ -75,18 +75,24 @@
       <section class="tk-card">
         <p class="eyebrow">TikTok developer integration</p>
         <h1>How Psych Brief uses TikTok</h1>
+        <p class="note" style="border-left:4px solid var(--moss);padding:6px 0 6px 16px;margin:0 0 18px;font-weight:700;color:var(--ink);">
+          Currently under TikTok review: <strong>Login Kit</strong> (<code>user.info.basic</code>).
+          The <strong>Content Posting API</strong> (<code>video.upload</code>) integration described
+          below is <strong>planned</strong> and will be submitted in a separate future review.
+        </p>
         <p>
-          Psych Brief is an educational psychology media service. It uses TikTok&rsquo;s official
-          developer products to let a creator connect their own TikTok account and receive
-          Psych Brief&rsquo;s rendered, creator-owned educational videos as <strong>drafts</strong> that
-          the creator reviews and posts themselves inside the TikTok app. Psych Brief does not
-          scrape TikTok and does not automate TikTok Studio.
+          Psych Brief is an educational psychology media service. A creator signs in with TikTok
+          (Login Kit) to connect their own TikTok account to their Psych Brief workspace. In the
+          planned next phase, Psych Brief will also deliver the creator&rsquo;s rendered, creator-owned
+          educational videos to their TikTok inbox as <strong>drafts</strong> that the creator reviews
+          and posts themselves inside the TikTok app. Psych Brief does not scrape TikTok and does not
+          automate TikTok Studio.
         </p>
         <div class="pill-row">
-          <span class="pill">Product: <strong>Login Kit</strong></span>
-          <span class="pill">Product: <strong>Content Posting API</strong></span>
-          <span class="pill">Scope: <strong>user.info.basic</strong></span>
-          <span class="pill">Scope: <strong>video.upload</strong></span>
+          <span class="pill">Now: <strong>Login Kit</strong></span>
+          <span class="pill">Now: scope <strong>user.info.basic</strong></span>
+          <span class="pill">Planned: <strong>Content Posting API</strong></span>
+          <span class="pill">Planned: scope <strong>video.upload</strong></span>
         </div>
       </section>
 
@@ -111,12 +117,13 @@
       </section>
 
       <section class="tk-card" id="content-posting">
-        <p class="eyebrow">Publishing</p>
+        <p class="eyebrow">Publishing &mdash; planned (separate future review)</p>
         <h2>Content Posting API &mdash; <code>video.upload</code></h2>
         <p>
-          Psych Brief uses the Content Posting API in <strong>upload (draft) mode</strong> with the
-          <strong>video.upload</strong> scope. This sends a finished, creator-owned MP4 to the
-          creator&rsquo;s TikTok inbox as a <strong>draft</strong>. The creator then opens TikTok,
+          In a planned next phase, Psych Brief will use the Content Posting API in
+          <strong>upload (draft) mode</strong> with the <strong>video.upload</strong> scope. This sends
+          a finished, creator-owned MP4 to the creator&rsquo;s TikTok inbox as a <strong>draft</strong>.
+          The creator then opens TikTok,
           reviews the draft, edits anything they want, sets their own audience and disclosure
           settings, and publishes it manually. Psych Brief does <strong>not</strong> use Direct Post,
           does <strong>not</strong> auto-publish, and does <strong>not</strong> request

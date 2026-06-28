@@ -158,15 +158,22 @@
 
     <main class="demo-shell">
       <section class="demo-hero">
+        <p class="note" style="border-left:4px solid var(--gold);padding:6px 0 6px 16px;margin:0 0 18px;font-weight:700;color:var(--ink);">
+          Illustrative overview &mdash; not the live integration. The real TikTok authorization runs
+          inside the Psych Brief app; the steps below are a simulated walkthrough. <strong>The current
+          TikTok review covers Login Kit (<code>user.info.basic</code>) only.</strong> The Content
+          Posting API draft-upload steps shown here are <strong>planned</strong> for a separate future
+          review and are not part of the current submission.
+        </p>
         <p class="eyebrow">TikTok app-review walkthrough</p>
         <h1>End-to-end TikTok integration flow.</h1>
         <p>
-          This page walks a TikTok reviewer through the exact Psych Brief flow: the public site
-          (this domain), Login Kit authorization for <strong>user.info.basic</strong>, the OAuth
-          <a href="/tiktok/callback">callback</a>, a generated creator-owned MP4 draft, local
-          preflight checks, and a Content Posting API <strong>draft upload</strong> using
-          <strong>video.upload</strong>. The workflow uses only authorized creator access and
-          creator-owned MP4 drafts.
+          This page illustrates the Psych Brief flow: the public site (this domain), Login Kit
+          authorization for <strong>user.info.basic</strong>, and the OAuth
+          <a href="/tiktok/callback">callback</a>. It also previews a planned Content Posting API
+          <strong>draft upload</strong> (<strong>video.upload</strong>, inbox draft) that will be
+          submitted separately. The workflow uses only authorized creator access and creator-owned
+          MP4 drafts.
         </p>
         <p class="mono">Website URL shown for review: <span id="reviewOrigin">this domain</span>/</p>
         <p class="note" style="border-left:4px solid var(--moss);padding:4px 0 4px 16px;margin-top:18px;font-weight:700;color:var(--ink);">
