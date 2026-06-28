@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TikTok Integration | Psych Brief</title>
+    <meta
+      name="description"
+      content="How Psych Brief uses TikTok Login Kit and the Content Posting API: user.info.basic authorization and video.upload draft uploads that the creator reviews and posts inside TikTok."
+    />
+    <link rel="canonical" href="https://psychbrief.online/tiktok" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .tk-shell { max-width: 980px; margin: 36px auto 90px; }
+      .tk-card {
+        border: 1px solid var(--line);
+        background: rgba(255, 250, 240, 0.82);
+        box-shadow: 0 18px 48px rgba(42, 44, 36, 0.08);
+        padding: clamp(24px, 5vw, 48px);
+      }
+      .tk-card + .tk-card { margin-top: 18px; }
+      .tk-card h2 { margin-top: 0; }
+      .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 4px; }
+      .pill {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.55);
+        padding: 8px 12px;
+        font-weight: 800;
+        font-size: 0.92rem;
+      }
+      .pill strong { color: var(--moss); }
+      .flow-steps { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 12px; }
+      .flow-steps li {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 14px;
+        align-items: start;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.45);
+        padding: 14px 16px;
+      }
+      .flow-steps .n {
+        display: grid; place-items: center;
+        width: 32px; height: 32px;
+        background: var(--ink); color: #fff;
+        border-radius: 50%; font-weight: 900;
+      }
+      .flow-steps p { margin: 4px 0 0; }
+      .note {
+        border-left: 4px solid var(--moss);
+        padding: 4px 0 4px 16px;
+        margin-top: 18px;
+        color: var(--ink);
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Psych Brief home">
+        <span class="brand-mark" aria-hidden="true">PB</span>
+        <span>Psych Brief</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/tiktok">TikTok Integration</a>
+        <a href="/review-demo">Review Demo</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </nav>
+    </header>
+
+    <main class="tk-shell">
+      <section class="tk-card">
+        <p class="eyebrow">TikTok developer integration</p>
+        <h1>How Psych Brief uses TikTok</h1>
+        <p>
+          Psych Brief is an educational psychology media service. It uses TikTok&rsquo;s official
+          developer products to let a creator connect their own TikTok account and receive
+          Psych Brief&rsquo;s rendered, creator-owned educational videos as <strong>drafts</strong> that
+          the creator reviews and posts themselves inside the TikTok app. Psych Brief does not
+          scrape TikTok and does not automate TikTok Studio.
+        </p>
+        <div class="pill-row">
+          <span class="pill">Product: <strong>Login Kit</strong></span>
+          <span class="pill">Product: <strong>Content Posting API</strong></span>
+          <span class="pill">Scope: <strong>user.info.basic</strong></span>
+          <span class="pill">Scope: <strong>video.upload</strong></span>
+        </div>
+      </section>
+
+      <section class="tk-card" id="login-kit">
+        <p class="eyebrow">Authentication</p>
+        <h2>Login Kit &mdash; <code>user.info.basic</code></h2>
+        <p>
+          A creator authorizes Psych Brief through TikTok&rsquo;s standard OAuth 2.0 Login Kit flow.
+          Psych Brief requests only the <strong>user.info.basic</strong> scope, which returns the
+          creator&rsquo;s basic public profile (open ID, display name, and avatar) so Psych Brief can
+          confirm which authorized account it is connected to. Psych Brief never asks for a TikTok
+          password. The OAuth redirect returns to:
+        </p>
+        <div class="pill-row">
+          <span class="pill">Redirect URI: <strong>https://psychbrief.online/tiktok/callback</strong></span>
+        </div>
+        <p class="note">
+          The authorization code returned to the callback is exchanged for an access token over a
+          secure server-side request. Tokens are never displayed in the browser. See the
+          <a href="/tiktok/callback">callback page</a> for details.
+        </p>
+      </section>
+
+      <section class="tk-card" id="content-posting">
+        <p class="eyebrow">Publishing</p>
+        <h2>Content Posting API &mdash; <code>video.upload</code></h2>
+        <p>
+          Psych Brief uses the Content Posting API in <strong>upload (draft) mode</strong> with the
+          <strong>video.upload</strong> scope. This sends a finished, creator-owned MP4 to the
+          creator&rsquo;s TikTok inbox as a <strong>draft</strong>. The creator then opens TikTok,
+          reviews the draft, edits anything they want, sets their own audience and disclosure
+          settings, and publishes it manually. Psych Brief does <strong>not</strong> use Direct Post,
+          does <strong>not</strong> auto-publish, and does <strong>not</strong> request
+          <code>video.publish</code> or <code>video.list</code>.
+        </p>
+        <h3>Draft upload flow</h3>
+        <ol class="flow-steps">
+          <li>
+            <span class="n">1</span>
+            <div>
+              <strong>Render</strong>
+              <p>Psych Brief produces an original educational MP4 from researched, source-cited script material.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">2</span>
+            <div>
+              <strong>Preflight</strong>
+              <p>Local quality gates check video format, caption length, source citations, and safety wording before anything is sent to TikTok.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">3</span>
+            <div>
+              <strong>Upload as draft</strong>
+              <p>The MP4 is uploaded to the creator&rsquo;s TikTok inbox via the Content Posting API (video.upload). No post is published by Psych Brief.</p>
+            </div>
+          </li>
+          <li>
+            <span class="n">4</span>
+            <div>
+              <strong>Creator review &amp; post</strong>
+              <p>The creator opens TikTok, reviews the draft, applies TikTok&rsquo;s disclosure/audience settings, and decides whether to publish. Final publishing control stays entirely with the creator. Psych Brief tells the creator clearly: <em>&ldquo;You must click on the inbox notification to continue the editing flow in TikTok and complete the post.&rdquo;</em></p>
+            </div>
+          </li>
+        </ol>
+        <p class="note">
+          Generated educational content is disclosed by the creator using TikTok&rsquo;s built-in
+          content-disclosure controls at the time of posting.
+        </p>
+      </section>
+
+      <section class="tk-card" id="compliance">
+        <p class="eyebrow">Content Sharing Guidelines</p>
+        <h2>How Psych Brief follows TikTok&rsquo;s posting rules</h2>
+        <p>
+          Before any draft is sent, Psych Brief&rsquo;s upload screen follows TikTok&rsquo;s Content
+          Sharing Guidelines:
+        </p>
+        <ul class="flow-steps">
+          <li><span class="n">&bull;</span><div><strong>Creator identification</strong><p>The connected TikTok account&rsquo;s display name and avatar are shown (from the Creator Info API) so the creator confirms which account will receive the draft.</p></div></li>
+          <li><span class="n">&bull;</span><div><strong>Creator-set metadata</strong><p>Title, privacy level (populated from the account&rsquo;s allowed options), and the &ldquo;Allow Comments / Duet / Stitch&rdquo; toggles are chosen by the creator and are not pre-set; interaction toggles default to off.</p></div></li>
+          <li><span class="n">&bull;</span><div><strong>Commercial-content disclosure</strong><p>A commercial-content disclosure toggle is provided and defaults to off, supporting &ldquo;Your Brand&rdquo; and &ldquo;Branded Content&rdquo; labels per TikTok&rsquo;s rules.</p></div></li>
+          <li><span class="n">&bull;</span><div><strong>Music Usage Confirmation</strong><p>Before the creator confirms an upload, Psych Brief shows: <em>&ldquo;By posting, you agree to TikTok&rsquo;s Music Usage Confirmation.&rdquo;</em></p></div></li>
+          <li><span class="n">&bull;</span><div><strong>No alterations</strong><p>Psych Brief does not add watermarks, logos, or promotional text to the creator&rsquo;s video, and never transmits content without the creator&rsquo;s express action.</p></div></li>
+        </ul>
+        <p class="note">
+          Psych Brief is an independent service and is not affiliated with, endorsed by, or controlled
+          by TikTok.
+        </p>
+      </section>
+
+      <section class="tk-card">
+        <p class="eyebrow">For reviewers</p>
+        <h2>Reviewing the integration</h2>
+        <p>
+          The <a href="/review-demo">review demo</a> walks through the exact end-to-end flow a
+          reviewer can follow: the public site, Login Kit authorization, the callback, a generated
+          MP4 draft, preflight, and the Content Posting API draft upload &mdash; with no Direct Post
+          unless that capability is separately requested and approved.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <span>Psych Brief</span>
+      <a href="/tiktok">TikTok Integration</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:amosher16@gmail.com">amosher16@gmail.com</a>
+    </footer>
+  </body>
+</html>
