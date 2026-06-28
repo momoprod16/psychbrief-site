@@ -6,7 +6,7 @@
     <title>TikTok Integration | Psych Brief</title>
     <meta
       name="description"
-      content="How Psych Brief uses TikTok Login Kit and the Content Posting API: user.info.basic authorization and video.upload draft uploads that the creator reviews and posts inside TikTok."
+      content="How Psych Brief uses TikTok Login Kit for user.info.basic authorization, with Content Posting API draft uploads planned for a separate future review."
     />
     <link rel="canonical" href="https://psychbrief.online/tiktok" />
     <link rel="icon" type="image/png" sizes="1024x1024" href="/psychbrief-app-icon.png" />
@@ -122,8 +122,8 @@
         <p>
           In a planned next phase, Psych Brief will use the Content Posting API in
           <strong>upload (draft) mode</strong> with the <strong>video.upload</strong> scope. This sends
-          a finished, creator-owned MP4 to the creator&rsquo;s TikTok inbox as a <strong>draft</strong>.
-          The creator then opens TikTok,
+          a finished, creator-owned MP4 to the
+          creator&rsquo;s TikTok inbox as a <strong>draft</strong>. The creator then opens TikTok,
           reviews the draft, edits anything they want, sets their own audience and disclosure
           settings, and publishes it manually. Psych Brief does <strong>not</strong> use Direct Post,
           does <strong>not</strong> auto-publish, and does <strong>not</strong> request
@@ -167,11 +167,11 @@
       </section>
 
       <section class="tk-card" id="compliance">
-        <p class="eyebrow">Content Sharing Guidelines</p>
-        <h2>How Psych Brief follows TikTok&rsquo;s posting rules</h2>
+        <p class="eyebrow">Content Sharing Guidelines &mdash; planned future phase</p>
+        <h2>How the planned posting workflow will follow TikTok&rsquo;s posting rules</h2>
         <p>
-          Before any draft is sent, Psych Brief&rsquo;s upload screen follows TikTok&rsquo;s Content
-          Sharing Guidelines:
+          If Psych Brief later requests Content Posting API approval, the upload screen will follow
+          TikTok&rsquo;s Content Sharing Guidelines before any draft is sent:
         </p>
         <ul class="flow-steps">
           <li><span class="n">&bull;</span><div><strong>Creator identification</strong><p>The connected TikTok account&rsquo;s display name and avatar are shown (from the Creator Info API) so the creator confirms which account will receive the draft.</p></div></li>
@@ -190,10 +190,10 @@
         <p class="eyebrow">For reviewers</p>
         <h2>Reviewing the integration</h2>
         <p>
-          The <a href="/review-demo">review demo</a> walks through the exact end-to-end flow a
-          reviewer can follow: the public site, Login Kit authorization, the callback, a generated
-          MP4 draft, preflight, and the Content Posting API draft upload &mdash; with no Direct Post
-          unless that capability is separately requested and approved.
+          The <a href="/review-demo">review demo</a> highlights the current Login Kit review flow:
+          the public site, Login Kit authorization, and the callback. Any generated MP4 draft,
+          preflight, or Content Posting API draft-upload steps are illustrative only and planned for
+          a separate future review.
         </p>
       </section>
     </main>
