@@ -115,10 +115,13 @@
         <p class="eyebrow">TikTok Login Kit &middot; OAuth 2.0 redirect URI</p>
         <h1 id="callback-title">Authorization callback received</h1>
         <p class="lead">
-          This is the registered redirect URI for Psych Brief&rsquo;s TikTok Login Kit:
-          <strong>https://psychbrief.online/tiktok/callback</strong>. After a creator authorizes the
-          <code>user.info.basic</code> scope, TikTok redirects here with a short-lived, one-time
-          <strong>authorization code</strong> and the <strong>state</strong> value.
+          The registered redirect URI for Psych Brief&rsquo;s TikTok Login Kit is
+          <strong>https://auth.psychbrief.online/tiktok/callback</strong>, served on the same
+          registrable domain as this site. After a creator authorizes the
+          <code>user.info.basic</code> scope, TikTok redirects there with a short-lived, one-time
+          <strong>authorization code</strong> and the <strong>state</strong> value. This page
+          documents that exchange; to run the live flow, use
+          <a href="https://auth.psychbrief.online/tiktok/login">Sign in with TikTok</a>.
         </p>
         <p class="lead">
           The authorization code shown below is <strong>not</strong> an access token. It is exchanged

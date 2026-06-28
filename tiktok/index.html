@@ -107,12 +107,16 @@
           password. The OAuth redirect returns to:
         </p>
         <div class="pill-row">
-          <span class="pill">Redirect URI: <strong>https://psychbrief.online/tiktok/callback</strong></span>
+          <span class="pill">Redirect URI: <strong>https://auth.psychbrief.online/tiktok/callback</strong></span>
         </div>
+        <p style="margin:20px 0 6px;">
+          <a class="button primary" href="https://auth.psychbrief.online/tiktok/login">Sign in with TikTok</a>
+        </p>
         <p class="note">
           The authorization code returned to the callback is exchanged for an access token over a
-          secure server-side request. Tokens are never displayed in the browser. See the
-          <a href="/tiktok/callback">callback page</a> for details.
+          secure server-side request. Tokens are never displayed in the browser; the connected screen
+          shows only the creator&rsquo;s display name and avatar. The live authorization flow runs at
+          <strong>auth.psychbrief.online</strong> (the same registrable domain as this site).
         </p>
       </section>
 
